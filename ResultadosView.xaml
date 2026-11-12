@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="ProyectoAutomatas.Views.ResultadosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoAutomatas.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Consolas">
+    <Grid Background="#061E29">
+        <Border CornerRadius="20" 
+            Background="#1D546D" 
+            Padding="40" 
+            Width="450" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+            BorderBrush="#5F9598"
+            BorderThickness="2">
+
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="{Binding TituloResultado}" 
+                       FontSize="35" 
+                       FontWeight="Black" 
+                       Foreground="#F3F4F4" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,10"></TextBlock>
+
+                <TextBlock Text="{Binding MensajeResultado}" 
+                       Foreground="#5F9598" 
+                       FontSize="18" 
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Margin="0,0,0,30"/>
+
+                <StackPanel>
+                    <Button Content="SIGUENTE NIVEL" 
+                        Width="220" Height="45" FontSize="13"
+                        Background="#F3F4F4" Foreground="Black" 
+                        FontWeight="Bold" BorderThickness="0"
+                        Margin="0,0,0,12"  Command="{Binding CambiarDeNivelCommand}" >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsWinner}" Value="false">
+                                        <Setter Property="Visibility" Value="Hidden"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Content="REINTENTAR" FontSize="13"
+                        Width="220" Height="45" 
+                        Background="#5F9598" Foreground="White" 
+                        FontWeight="Bold" BorderThickness="0"
+                        Margin="0,0,0,12" Command="{Binding IniciarJuegoCommand}"></Button>
+                    <Button Content="VER MARCADOR" FontSize="13"
+                        Width="220" Height="45" 
+                        Background="#1D546D" Foreground="White" 
+                        FontWeight="Bold" BorderBrush="#5F9598" BorderThickness="1"
+                        Margin="0,0,0,12"  Command="{Binding VerMarcadorCommand}"></Button>
+                    <Button Content="SALIR" FontSize="13"
+                        Width="220" Height="45" 
+                        Background="Transparent" Foreground="White" 
+                        FontWeight="SemiBold" BorderBrush="White" BorderThickness="2" 
+                        Margin="0,8,0,0"  Command="{Binding VerInicioCommand}" ></Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
